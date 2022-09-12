@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Edit Student Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <center>
+      <form method="post" action="/update/{{EventRegister.id}}">
+        {% csrf_token %}
+        <table border="2">
+          <h2>Edit record here</h2>
+          <h2>The student id is: {{EventRegister.id}}</h2>
+
+          <tr>
+            <td>Student Roll No</td>
+            <td>
+              <input
+                type="text"
+                value="{{EventRegister.Rollno}}"
+                name="Rollno"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Student Name</td>
+            <td>
+              <input type="text" value="{{EventRegister.Name}}" name="Name" />
+            </td>
+          </tr>
+          <tr>
+            <td>Student Class</td>
+            <td>
+              <input type="text" value="{{EventRegister.Class}}" name="Class" />
+            </td>
+          </tr>
+          <tr>
+            <td>Student Age</td>
+            <td>
+              <input type="text" value="{{EventRegister.Age}}" name="Age" />
+            </td>
+          </tr>
+        </table>
+
+        <input type="submit" value="update student record" />
+
+        <a href="{% url 'studentDisplay'%}">Home Page</a>
+
+        <hr />
+        {% if messages %} {% for result in messages %}
+        <b style="color: green">{{result}}</b>
+        {% endfor %} {% endif %}
+      </form>
+    </center>
+    <hr />
+  </body>
+</html>

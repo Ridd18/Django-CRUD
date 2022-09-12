@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <br />
+    <br />
+    <center>
+      <a href="{% url 'studentInsert'%}">Add new student</a>
+      <br />
+      <br />
+
+      <table border="2">
+        <tr>
+          <th>Student ID</th>
+          <th>Student Roll No</th>
+          <th>Student Name</th>
+          <th>Student Class</th>
+          <th>Student Age</th>
+        </tr>
+        {% for studentDisplay in EventRegister %}
+        <tr>
+          <td>{{studentDisplay.id}}</td>
+          <td>{{studentDisplay.Rollno}}</td>
+          <td>{{studentDisplay.Name}}</td>
+          <td>{{studentDisplay.Class}}</td>
+          <td>{{studentDisplay.Age}}</td>
+          <td><a href="/edit/{{studentDisplay.id}}">Edit student</a></td>
+          <td>
+            <a
+              href="/delete/{{studentDisplay.id}}"
+              onclick="return confirm('Are you sure youwant to delete?')"
+              >Delete student</a
+            >
+          </td>
+        </tr>
+        {% endfor%}
+      </table>
+    </center>
+  </body>
+</html>
